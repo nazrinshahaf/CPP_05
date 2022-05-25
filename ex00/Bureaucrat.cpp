@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:32:06 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/24 14:26:38 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/05/25 18:43:05 by nazrinsha        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,12 @@ Bureaucrat::~Bureaucrat()
 Bureaucrat::Bureaucrat(string name, int grade)
 {
 	cout << GREEN "Bureaucrat Assignment Constructor called" RESET << endl;
-	try
-	{
-		if (grade < 1)
-			throw GradeTooHighException();
-		else if (grade > 150)
-			throw GradeTooLowException();
-	}
-	catch(exception const &excep)
-	{
-		cout << "Exception caught: " RED "<" << excep.what() << ">" RESET << endl;
-		setGrade(0);
-		setName("");
-		return ;
-	}
-	setGrade(grade);
-	setName(name);
+	this->_grade = grade;
+	this->_name = name;
+	if (grade < 1)
+		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &tocopy)
