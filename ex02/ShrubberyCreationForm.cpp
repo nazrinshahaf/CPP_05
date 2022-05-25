@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 19:19:29 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 21:09:14 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/05/25 22:05:17 by nazrinsha        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,52 +41,29 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void		ShrubberyCreationForm::execute(Bureaucrat const &bureaucrat) const
 {
-	try
-	{
-		if (bureaucrat.getGrade() > this->getGradeToExec())
-			throw Form::GradeTooLowException("Grade Too Low", "grade_to_exec", bureaucrat.getGrade(), "ShrubberyCreationForm");
-	}
-	catch (Form::GradeTooLowException &exception)
-	{
-		cout << "Exception caught: " RED "<" << exception.what() << ">." RESET << endl
-		<< "Can't execute " MAGENTA "<" << this->getName() << ">" RESET << endl
-		<< "with execute requirement of: " << this->getGradeToExec() << endl
-		<< "bureaucrat only has grade: " << bureaucrat.getGrade() << endl
-		<< "in " BLUE "<" << exception.getWhichFunction() << "> " RESET << endl;
+	if (this->checkExecutable(bureaucrat) == false)
 		return ;
-	}
-	try
-	{
-		if (this->getIsSigned() == false)
-			throw Form::FormNotSigned("Form Not Signed", "ShrubberyCreationForm");
-	}
-	catch (Form::FormNotSigned &exception)
-	{
-		cout << "Exception caught: " RED "<" << exception.what() << ">." RESET << endl;
-		cout << MAGENTA "<" << bureaucrat.getName() << "> " RESET
-			<< "couldn't execute form because it has not been signed yet." << endl;
-		return ;
-	}
-		std::ofstream	file(this->_target + "_shrubbery");
 
-		cout << MAGENTA "<" << bureaucrat.getName() << "> " RESET
-			<< "executing form " BLUE "<" << this->getName() << ">" RESET << endl;
+	std::ofstream	file(this->_target + "_shrubbery");
 
-		file << "⠀⠀⠀⠀⠀⠀⠀  ⠀⣰⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⡿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⠀⠀⠀⠐⢛⣿⡛⠁⣀⠉⠻⠦⠀⠀⠀⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣧⣰⣿⢿⣶⣤⠀⠀⠀⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⠀⠀⠀⣽⣿⣿⣿⡿⠃⡀⠛⠉⠃⠀⠀⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⠀⠀⢾⣿⣿⣿⣇⠀⣼⣿⣆⠀⣀⠀⠀⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣼⣿⣧⠙⢷⣿⣷⣄⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣀⡀⠙⠉⠀⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠴⢿⣿⣿⣿⠿⠟⠻⢿⣿⣿⢿⣿⡶⠛⠷⠆⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⢀⣾⣿⣿⣿⢀⣴⣶⣤⡈⠛⠀⣄⡉⠀⢰⡄⠀⠀⠀" << endl;
-		file << "⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣿⣿⣿⣶⣿⡄⠀⠀" << endl;
-		file << "⠀⠀⠉⠉⠀⠀⠿⠿⠛⠋⣿⣿⡟⠿⡿⠉⠛⠿⠿⠛⠋⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" << endl;
-		file << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" << endl;
-		file.close();
+	cout << MAGENTA "<" << bureaucrat.getName() << "> " RESET
+		<< "executing form " BLUE "<" << this->getName() << ">" RESET << endl;
+
+	file << "⠀⠀⠀⠀⠀⠀⠀  ⠀⣰⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⡿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⠀⠀⠀⠐⢛⣿⡛⠁⣀⠉⠻⠦⠀⠀⠀⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣧⣰⣿⢿⣶⣤⠀⠀⠀⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⠀⠀⠀⣽⣿⣿⣿⡿⠃⡀⠛⠉⠃⠀⠀⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⠀⠀⢾⣿⣿⣿⣇⠀⣼⣿⣆⠀⣀⠀⠀⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣼⣿⣧⠙⢷⣿⣷⣄⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣀⡀⠙⠉⠀⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠴⢿⣿⣿⣿⠿⠟⠻⢿⣿⣿⢿⣿⡶⠛⠷⠆⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⢀⣾⣿⣿⣿⢀⣴⣶⣤⡈⠛⠀⣄⡉⠀⢰⡄⠀⠀⠀" << endl;
+	file << "⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣿⣿⣿⣶⣿⡄⠀⠀" << endl;
+	file << "⠀⠀⠉⠉⠀⠀⠿⠿⠛⠋⣿⣿⡟⠿⡿⠉⠛⠿⠿⠛⠋⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" << endl;
+	file << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠛⠛⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" << endl;
+	file.close();
 }
 
 const string	&ShrubberyCreationForm::getTarget(void) const

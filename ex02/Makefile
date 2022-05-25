@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SANITIZE = -fsanitize=address
 RM = rm -f
 
-SRC = ShrubberyCreationForm.cpp Form.cpp Bureaucrat.cpp\
+SRC = PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Form.cpp Bureaucrat.cpp\
 
 MAIN = main.cpp
 

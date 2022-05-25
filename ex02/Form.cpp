@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:40:32 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 20:52:41 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/05/25 22:01:05 by nazrinsha        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,37 @@ Form				&Form::operator=(Form const &tocopy)
 	this->_grade_to_exec = tocopy.getGradeToExec();
 	this->_is_signed = tocopy.getIsSigned();
 	return (*this);
+}
+
+bool				Form::checkExecutable(Bureaucrat const &bureaucrat) const
+{
+	try
+	{
+		if (bureaucrat.getGrade() > this->getGradeToExec())
+			throw Form::GradeTooLowException("Grade Too Low", "grade_to_exec", bureaucrat.getGrade(), "RobotomyRequestForm");
+	}
+	catch (Form::GradeTooLowException &exception)
+	{
+		cout << "Exception caught: " RED "<" << exception.what() << ">." RESET << endl
+		<< "Can't execute " MAGENTA "<" << this->getName() << ">" RESET << endl
+		<< "with execute requirement of: " << this->getGradeToExec() << endl
+		<< "bureaucrat only has grade: " << bureaucrat.getGrade() << endl
+		<< "in " BLUE "<" << exception.getWhichFunction() << "> " RESET << endl;
+		return (false);
+	}
+	try
+	{
+		if (this->getIsSigned() == false)
+			throw Form::FormNotSigned("Form Not Signed", "RobotomyRequestForm");
+	}
+	catch (Form::FormNotSigned &exception)
+	{
+		cout << "Exception caught: " RED "<" << exception.what() << ">." RESET << endl;
+		cout << MAGENTA "<" << bureaucrat.getName() << "> " RESET
+			<< "couldn't execute form because it has not been signed yet." << endl;
+		return (false);
+	}
+	return (true);
 }
 
 void				Form::beSigned(Bureaucrat const &bureaucrat)

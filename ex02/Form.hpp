@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:40:49 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 20:50:45 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/05/25 21:58:48 by nazrinsha        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ class	Form
 		Form			&operator=(Form const &tocopy);
 
 		virtual void	execute(Bureaucrat const &bureaucrat) const = 0;
+		virtual bool	checkExecutable(Bureaucrat const &bureaucrat) const;
 
-		void			beSigned(const Bureaucrat &bureaucrat);
+		void			beSigned(Bureaucrat const &bureaucrat);
 
 		const string	&getName(void) const;
 		void			setName(string const name);
