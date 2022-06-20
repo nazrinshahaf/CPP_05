@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 13:07:41 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 22:17:26 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/06/20 18:42:49 by nfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,17 @@ int	main()
 //		cout << endl << *shrubbery_form << endl;
 //		cout << *bureaucrat << endl;
 //
-//		cout << CYAN "executing with insufficient grade..." RESET << endl;
+//		cout << CYAN "executing with insufficient grade and without signing..." RESET << endl;
 //		shrubbery_form->execute(*bureaucrat);
 //		cout << endl;
 //
 //		cout << *bureaucrat2 << endl;
 //		cout << CYAN "executing without signing first..." RESET << endl;
 //		shrubbery_form->execute(*bureaucrat2);
+//		cout << endl;
 //
-//		//cout << endl;
-//		//cout << CYAN "signing ShrubberyCreationForm..." RESET << endl;
-//		//bureaucrat2->signForm(*shrubbery_form);
-//		//cout << CYAN "executing ShrubberyCreationForm..." RESET << endl;
-//		//shrubbery_form->execute(*bureaucrat2);
+//		cout << CYAN "executing with insufficient grade and with signing..." RESET << endl;
+//		shrubbery_form->execute(*bureaucrat);
 //
 //		cout << endl;
 //		delete bureaucrat2;
@@ -60,7 +58,7 @@ int	main()
 //
 //	cout << CYAN "[Trying To initialise ShrubberyCreationForm with signing and sufficient bureaucrat grade]" RESET << endl << endl;
 //	{
-//		Form		*shrubbery_form = new ShrubberyCreationForm("Not_Eu-Lee's_house");
+//		Form		*shrubbery_form = new ShrubberyCreationForm("Eu-Lee's_house");
 //		Bureaucrat	*bureaucrat2 = new Bureaucrat("Bigger Asshole", 5);
 //
 //		cout << endl << *shrubbery_form << endl;
