@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:32:06 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 18:43:05 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/06/20 16:46:37 by nfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ Bureaucrat::Bureaucrat(string name, int grade)
 Bureaucrat::Bureaucrat(Bureaucrat const &tocopy)
 {
 	cout << GREEN "Bureaucrat Copy Constructor called" RESET << endl;
-	setName(tocopy.getName());
-	setGrade(tocopy.getGrade());
+	this->_name = (tocopy.getName());
+	this->_grade = (tocopy.getGrade());
 }
 
 Bureaucrat		&Bureaucrat::operator=(Bureaucrat const &tocopy)
 {
 	cout << GREEN "Bureaucrat Copy Assignment Operator called" RESET << endl;
-	setName(tocopy.getName());
-	setGrade(tocopy.getGrade());
+	this->_name = (tocopy.getName());
+	this->_grade = (tocopy.getGrade());
 	return (*this);
 }
 
@@ -63,10 +63,10 @@ void			Bureaucrat::incrementGrade(void)
 {
 	try
 	{
-		if ((_grade - 1 ) < 1)
+		if ((this->_grade - 1 ) < 1)
 			throw GradeTooHighException();
 		else
-			_grade--;
+			this->_grade--;
 	}
 	catch(exception &excep)
 	{
@@ -78,10 +78,10 @@ void			Bureaucrat::decrementGrade(void)
 {
 	try
 	{
-		if ((_grade + 1 ) > 150)
+		if ((this->_grade + 1 ) > 150)
 			throw GradeTooLowException();
 		else
-			_grade++;
+			this->_grade++;
 	}
 	catch(exception &excep)
 	{
@@ -121,7 +121,7 @@ const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 
 ostream& operator<<(ostream& os, const Bureaucrat& bureaucrat)
 {
-	os << BLUE "<" << bureaucrat.getName() << ">" RESET ", bureaucrat grade: " 
+	os << BLUE "<" << bureaucrat.getName() << ">" RESET ", bureaucrat grade: "
 		<< MAGENTA "<" << bureaucrat.getGrade() << ">" RESET << endl;
 	return (os);
 }

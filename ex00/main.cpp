@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 16:53:47 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 18:53:06 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/06/20 16:44:45 by nfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	main()
 
 		delete bureaucrat;
 	}
-	catch (Bureaucrat::GradeTooHighException &exception)
+	catch (Bureaucrat::GradeTooHighException const &exception)
 	{
 		cout << "Exception caught: " RED "<" << exception.what() << ">." RESET << endl;
 	}
-	catch (Bureaucrat::GradeTooLowException &exception)
+	catch (Bureaucrat::GradeTooLowException const &exception)
 	{
 		cout << "Exception caught: " RED "<" << exception.what() << ">." RESET << endl;
 	}
