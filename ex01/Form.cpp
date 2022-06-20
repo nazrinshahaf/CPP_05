@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:40:32 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 18:23:15 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/06/20 17:40:10 by nfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Form::Form(string const name, int grade_to_sign, int grade_to_exec)
 		throw GradeTooHighException("Grade Too High", "grade_to_sign", _grade_to_sign, "Form Constructor");
 	else if (grade_to_sign > 150)
 		throw GradeTooLowException("Grade Too Low", "grade_to_sign", _grade_to_sign, "Form Constructor");
-	if (grade_to_exec < 1)	
+	if (grade_to_exec < 1)
 		throw GradeTooHighException("Grade Too High", "grade_to_exec", _grade_to_exec, "Form Constructor");
 	else if (grade_to_exec > 150)
 		throw GradeTooLowException("Grade Too Low", "grade_to_exec", _grade_to_exec, "Form Constructor");
@@ -162,7 +162,7 @@ Form::GradeTooHighException::GradeTooHighException(string err_msg, string which_
 	_init_grade(init_grade),
 	_which_function(which_function) {}
 
-Form::GradeTooHighException::~GradeTooHighException() _NOEXCEPT {}
+Form::GradeTooHighException::~GradeTooHighException() throw() {}
 
 const char			*Form::GradeTooHighException::what(void) const throw()
 {
@@ -170,18 +170,18 @@ const char			*Form::GradeTooHighException::what(void) const throw()
 }
 
 string	Form::GradeTooHighException::getWhichGrade() const
-{ 
-	return this->_which_grade; 
+{
+	return (this->_which_grade);
 }
 
 string	Form::GradeTooHighException::getWhichFunction() const
-{ 
-	return this->_which_function; 
+{
+	return (this->_which_function);
 }
 
-int		Form::GradeTooHighException::getInitGrade() const 
+int		Form::GradeTooHighException::getInitGrade() const
 {
-	return this->_init_grade;
+	return (this->_init_grade);
 }
 
 /*
@@ -202,16 +202,16 @@ const char			*Form::GradeTooLowException::what(void) const throw()
 }
 
 string	Form::GradeTooLowException::getWhichGrade() const
-{ 
-	return this->_which_grade; 
+{
+	return (this->_which_grade);
 }
 
 string	Form::GradeTooLowException::getWhichFunction() const
-{ 
-	return this->_which_function; 
+{
+	return (this->_which_function);
 }
 
-int		Form::GradeTooLowException::getInitGrade() const 
+int		Form::GradeTooLowException::getInitGrade() const
 {
-	return this->_init_grade;
+	return (this->_init_grade);
 }

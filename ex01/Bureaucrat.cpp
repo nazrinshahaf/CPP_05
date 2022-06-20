@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 14:32:06 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 18:40:24 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/06/20 17:54:34 by nfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ const char	*Bureaucrat::GradeTooLowException::what(void) const throw()
 
 ostream& operator<<(ostream& os, const Bureaucrat& bureaucrat)
 {
-	os << BLUE "<" << bureaucrat.getName() << ">" RESET ", bureaucrat grade: " 
+	os << BLUE "<" << bureaucrat.getName() << ">" RESET ", bureaucrat grade: "
 		<< MAGENTA "<" << bureaucrat.getGrade() << ">" RESET << endl;
 	return (os);
 }

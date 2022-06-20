@@ -6,7 +6,7 @@
 /*   By: nazrinshahaf <marvin@42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 12:40:49 by nazrinsha         #+#    #+#             */
-/*   Updated: 2022/05/25 18:23:26 by nazrinsha        ###   ########.fr       */
+/*   Updated: 2022/06/20 17:40:03 by nfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ class	Form
 			public:
 				GradeTooHighException(string err_msg, string which_grade, int init_grade, string which_function);
 				virtual const char	*what(void) const throw();
-				~GradeTooHighException() _NOEXCEPT;
+				~GradeTooHighException() throw();
 				
 				string	getWhichGrade() const;
 				string	getWhichFunction() const;
