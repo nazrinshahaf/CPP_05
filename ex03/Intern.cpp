@@ -6,7 +6,7 @@
 /*   By: nfernand <nfernand@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 10:32:29 by nfernand          #+#    #+#             */
-/*   Updated: 2022/05/26 14:13:26 by nfernand         ###   ########.fr       */
+/*   Updated: 2022/06/21 10:53:39 by nfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,6 @@ Form		*Intern::makeForm(string const name, string const target)
 {
 	int			index = -1;
 	string		list[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
-//	Form		*array[3] =	{new PresidentialPardonForm(target),
-//								new RobotomyRequestForm(target),
-//								new ShrubberyCreationForm(target)};
 	Form*		(*array[3])(string) = {&makePresidentialPardonForm, &makeRobotomyRequestForm,
 										&makeShrubberyCreationForm};
 
@@ -85,7 +82,7 @@ Form		*Intern::makeForm(string const name, string const target)
 	}
 	if (index == -1)
 	{
-		cout << "An unpaid intern has " RED "[failed] " RESET "to create " 
+		cout << "An unpaid intern has " RED "[failed] " RESET "to create "
 			<< MAGENTA "<" << name + " form" << ">" RESET << endl;
 		return (NULL);
 	}
